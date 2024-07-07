@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <img src="images/logo.png" class="logo">
+        <ul id="sidemenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="exp.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skill.html">Skills</a></li>
+            <li><a href="contact.html">Contact Me</a></li>
+            <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+        </ul>
+            <i class="fa-solid fa-bars"onclick="openmenu()"></i>
+        </nav>
+    <!-----------experience----------->
+<div id="exp">
+    <div class="container">
+        <h1 class="sub-title">Experience</h1>
+        <div class="exp-list">
+            <div>
+                <i class="fa-solid fa-link"></i>
+                <h2>Web Design</h2>
+                <p>Secured 2nd position in a WebDev competition conducted by Techkriti'24</p>
+                <a href="https://restox.onrender.com/">Learn More</a>
+            </div>
+            <div>
+                <i class="fa-regular fa-bookmark"></i>
+                <h2>Research Experience</h2>
+                <p>Interned at SURGE, IIT Kanpur under Dr. Chinmoy Kolay, Dept. Of Civil Engineering</p>
+                <a href="#">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-handshake-angle"></i>
+                <h2>Social Work</h2>
+                <p>Volunteered at the Kumon Vashi Centre to teach school children English and Math</p>
+                <a href="#">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-computer"></i>
+                <h2>Leader, IIT Kanpur ACM SIGCHI Student Chapter</h2>
+                <p>Position of Responsibility</p>
+                <a href="#">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-people-group"></i>
+                <h2>Manager, Creatives Division, Outreach Cell, IITK</h2>
+                <p>Position of Responsibility</p>
+                <a href="#">Learn more</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var sidemeu=document.getElementById("sidemenu");
+    function openmenu(){
+        sidemeu.style.right="0";
+    }
+    function closemenu(){
+        sidemeu.style.right="-200px";
+    }
+</script>
+</body>
+</html>

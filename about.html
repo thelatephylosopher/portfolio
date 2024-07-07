@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!----------------about--------------------->
+    <nav>
+        <img src="images/logo.png" class="logo">
+        <ul id="sidemenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="exp.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skill.html">Skills</a></li>
+            <li><a href="contact.html">Contact Me</a></li>
+            <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+        </ul>
+            <i class="fa-solid fa-bars"onclick="openmenu()"></i>
+        </nav>
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/Pfp.png">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="subtitle">About Me</h1>
+                    <p>Hi! I am Riya Sanket Kashive, a student at IIT Kanpur studying Civil Engineering. Growing up in this world which is witnessing the rise of computers, it is my aim to design effective, sustainable and economical solutions to real world problems using my knowledge of industry and technical skills.
+                        <br><br>
+                        Apart from my interest in STEM, I have an artistic side to myself which loves literature and music. I am an avid reader, writer and poet, and have been trained in Hindustani classical Music for 10 years. Lately, my interests have expanded to linguistics, cognitive psychology and philosophy.
+                        <br><br>
+                        A woman of the renaissance by heart, I thoroughly enjoy the processes of composition, comprehension and discussion of ideas in all forms, abstract or concrete. I believe it adds to my well-roundedness as a person, synergizing creativity and logic. 
+                        <br><br>Here's a bit about my education background:</p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="education">
+                        <ul>
+                            <li><span>B.Tech in Civil Engineering: IIT Kanpur</span><br>Data Structures and Algorithms<br>Applied Probability and Statistics<br>Fundamentals of Computing<br>Structural Analysis<br>Environment and Sustainability</li>
+                            <li><span>CBSE(12th Grade): Ryan International School, Sanpada</span><br>Secured 95.6%</li>
+                            <li><span>ICSE(10th Grade): St. Mary's ICSE School, Koparkhairane</span><br>Secured 97.0%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+       <script>
+        var sidemeu=document.getElementById("sidemenu");
+        function openmenu(){
+            sidemeu.style.right="0";
+        }
+        function closemenu(){
+            sidemeu.style.right="-200px";
+        }
+    </script>
+</body>
+</html>

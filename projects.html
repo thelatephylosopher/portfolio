@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <img src="images/logo.png" class="logo">
+        <ul id="sidemenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="exp.html">Experience</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skill.html">Skills</a></li>
+            <li><a href="contact.html">Contact Me</a></li>
+            <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+        </ul>
+            <i class="fa-solid fa-bars"onclick="openmenu()"></i>
+        </nav>
+        <div id="projects">
+            <div class="container">
+                <h1 class="sub-title">Projects</h1>
+                <div class="work-list">
+                    <div class="work">
+                        <img src="images/proj1.png">
+                        <div class="layer">
+                            <h3>Real-time Captioning System with CDAP</h3>
+                            <p>IIT Kanpur ACM SIGCHI Student Chapter</p>
+                            <a href="#"><i class="fa-solid fa-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="work">
+                        <img src="images/proj2.png">
+                        <div class="layer">
+                            <h3>CERN and its Mysteries</h3>
+                            <p>Science Coffee House, IITK</p>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="work">
+                        <img src="images/proj3.png">
+                        <div class="layer">
+                            <h3>RiWrites</h3>
+                            <p>My thought experimentation lab!</p>
+                            <a href="riwrites.html"><i class="fa-solid fa-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="work">
+                        <img src="images/proj4.png">
+                        <div class="layer">
+                            <h3>JustSomeWisteRia</h3>
+                            <p>My YouTube Channel</p>
+                            <a href="https://www.youtube.com/@justsomewisteria3051"><i class="fa-solid fa-link"></i></a>
+                        </div>
+                    </div>
+                    <!--<a href="#" class="btn">See more</a>-->
+                </div>
+            </div>
+            </div>
+            <script>
+                var sidemeu=document.getElementById("sidemenu");
+                function openmenu(){
+                    sidemeu.style.right="0";
+                }
+                function closemenu(){
+                    sidemeu.style.right="-200px";
+                }
+            </script>
+</body>
+</html>
