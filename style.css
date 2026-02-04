@@ -425,7 +425,93 @@ nav ul li a:hover {
   transition: transform 0.3s ease, background-color 0.3s;
 }
 
-#back-to-top:hover {
-  transform: scale(1.1);
-  background-color: var(--color-light);
+
+/* ABOUT PAGE SPECIFIC */
+.about-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 5%;
+}
+
+.about-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 55%;
+  /* Slightly narrower to accommodate larger image */
+}
+
+.about-hero-text {
+  font-size: clamp(50px, 8vw, 120px);
+  line-height: 1.1;
+  font-style: italic;
+  white-space: nowrap;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 5vh;
+}
+
+.about-subtext {
+  font-size: clamp(16px, 2vw, 24px);
+  /* Smaller than hero-subtext */
+  font-style: normal;
+  text-align: left;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.about-image-tile {
+  /* 1.5x larger than hero-image-tile base size */
+  /* previous: clamp(140px, 17.5vw, 280px) */
+  /* new target: ~1.5x */
+  width: clamp(210px, 26vw, 420px);
+  height: clamp(210px, 26vw, 420px);
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-left: 5vw;
+}
+
+.about-image-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* MOBILE RESPONSIVENESS ADDITIONS */
+@media (max-aspect-ratio: 1/1) {
+  .about-hero {
+    flex-direction: column-reverse;
+    /* Text on bottom, image on top like home */
+    text-align: center;
+  }
+
+  .about-text-container {
+    width: 100%;
+    align-items: center;
+    /* Center align for mobile */
+    margin-top: 30px;
+  }
+
+  .about-hero-text {
+    text-align: center;
+    white-space: normal;
+  }
+
+  .about-subtext {
+    text-align: center;
+    font-size: 18px;
+    /* Readable size on mobile */
+  }
+
+  .about-image-tile {
+    width: 60vw;
+    height: 60vw;
+    margin-left: 0;
+  }
 }
