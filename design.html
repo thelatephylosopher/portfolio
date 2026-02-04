@@ -35,6 +35,14 @@
                 background-color: rgba(255, 165, 31, 0.95);
             }
         }
+
+        .category-tile {
+            cursor: pointer;
+            border-color: #ffa51f !important;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #2e281f;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -59,13 +67,36 @@
         </div>
     </nav>
 
-    <div class="container" style="padding-top: 150px;">
-        <div class="page-title-section">
-            <h1 class="page-title">Design Projects</h1>
+    <div
+        style="position: relative; width: 100%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 100px;">
+        <h1 class="page-title">Design Projects</h1>
+        <div class="tile-row">
+            <a href="#ui-design" class="tile category-tile clickable-element"><span>UI Design</span></a>
+            <a href="#ux-research" class="tile category-tile clickable-element"><span>UX Research</span></a>
+            <a href="#prototyping" class="tile category-tile clickable-element"><span>Prototyping</span></a>
+            <a href="#graphic-design" class="tile category-tile clickable-element"><span>Graphic Design</span></a>
+        </div>
+    </div>
+
+    <div style="background-color: rgba(254, 255, 243, 0.9); padding: 50px 5%;">
+        <div id="ui-design" class="section-block">
+            <h2 class="section-header">UI Design</h2>
+            <div id="ui-design-list" class="tile-row"></div>
         </div>
 
-        <div id="design-projects" class="tile-row">
-            <!-- Projects injected here -->
+        <div id="ux-research" class="section-block">
+            <h2 class="section-header">UX Research</h2>
+            <div id="ux-research-list" class="tile-row"></div>
+        </div>
+
+        <div id="prototyping" class="section-block">
+            <h2 class="section-header">Prototyping</h2>
+            <div id="prototyping-list" class="tile-row"></div>
+        </div>
+
+        <div id="graphic-design" class="section-block">
+            <h2 class="section-header">Graphic Design</h2>
+            <div id="graphic-design-list" class="tile-row"></div>
         </div>
     </div>
 
@@ -73,13 +104,13 @@
     <script src="scripts/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            renderSection('design-projects',
-                (p) => p.uiDesign === 1 || p.uxResearch === 1 || p.prototyping === 1 || p.graphicDesign === 1,
-                (p) => p.name,
-                (p) => p.link,
-                null,
-                '#ffa51f'
-            );
+            const tileBg = 'bg1.png'; // Updated to use bg1.png for tiles
+            const brdColor = '#ffa51f';
+
+            renderSection('ui-design-list', p => p.uiDesign === 1, p => p.name, p => p.link, tileBg, brdColor);
+            renderSection('ux-research-list', p => p.uxResearch === 1, p => p.name, p => p.link, tileBg, brdColor);
+            renderSection('prototyping-list', p => p.prototyping === 1, p => p.name, p => p.link, tileBg, brdColor);
+            renderSection('graphic-design-list', p => p.graphicDesign === 1, p => p.name, p => p.link, tileBg, brdColor);
         });
     </script>
 </body>

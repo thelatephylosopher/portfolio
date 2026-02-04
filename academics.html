@@ -80,7 +80,7 @@
             <a href="#coursework" class="tile category-tile clickable-element"><span>Coursework</span></a>
             <a href="#projects" class="tile category-tile clickable-element"><span>Projects</span></a>
             <a href="#publications" class="tile category-tile clickable-element"><span>Publications</span></a>
-            <a href="#people" class="tile category-tile clickable-element"><span>People</span></a>
+            <a href="#people" class="tile category-tile clickable-element"><span>Mentors</span></a>
         </div>
     </div>
 
@@ -111,7 +111,7 @@
 
         <!-- People -->
         <div id="people" class="section-block">
-            <h2 class="section-header">People</h2>
+            <h2 class="section-header">Mentors</h2>
             <div id="people-list" class="tile-row"></div>
         </div>
 
@@ -125,7 +125,13 @@
             const brdColor = '#ff5757';
 
             // 1. Coursework
-            const courses = [...new Set(projectsData.map(p => p.course).filter(c => c && c !== 'NaN'))];
+            // "only those courses for which 'Course Project' has been mentioned in 'Mentor'"
+            const courses = [...new Set(projectsData
+                .filter(p => p.mentor && p.mentor.toLowerCase().includes('course project'))
+                .map(p => p.course)
+                .filter(c => c && c !== 'NaN')
+            )];
+
             const courseContainer = document.getElementById('coursework-list');
             courses.forEach(courseName => {
                 const div = document.createElement('div');
@@ -141,10 +147,34 @@
             });
 
             // 2. Projects
-            renderSection('projects-list', p => true, p => p.name, p => p.link, tileBg, brdColor);
+            // "mention only those where 'Undergraduate Project' or 'Course Project' have been mentioned in the 'Mentor' column"
+            renderSection('projects-list', p => {
+                if (!p.mentor) return false;
+                const m = p.mentor.toLowerCase();
+                return m.includes('undergraduate project') || m.includes('course project');
+            }, p => p.name, p => p.link, tileBg, brdColor);
 
             // 3. People (Mentors)
-            renderSection('people-list', p => p.mentor && p.mentor !== 'NaN' && p.mentor !== 'Self Project' && p.mentor !== 'Competition', p => p.name, p => p.link, tileBg, brdColor);
+            // "do not mention Projects, instead make non-clickable tiles where the 'Mentor' has been written. 
+            // Only show those entries where Mentor starts with 'Dr'"
+            const peopleContainer = document.getElementById('people-list');
+            const mentors = [...new Set(projectsData
+                .filter(p => p.mentor && p.mentor.trim().startsWith('Dr'))
+                .map(p => p.mentor)
+            )];
+
+            mentors.forEach(mentorName => {
+                const div = document.createElement('div');
+                div.className = 'tile non-clickable-tile';
+                div.style.backgroundImage = `url('${tileBg}')`;
+                div.style.borderColor = brdColor;
+
+                const span = document.createElement('span');
+                span.innerText = mentorName;
+                div.appendChild(span);
+
+                peopleContainer.appendChild(div);
+            });
         });
     </script>
 </body>
