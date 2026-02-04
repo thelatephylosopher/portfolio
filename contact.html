@@ -1,53 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+    <style>
+        /* Navbar matches homepage: Dark Brown Background, Light Text */
+        nav {
+            background-color: #2e281f;
+            color: #fefff3;
+        }
+
+        nav a {
+            color: #fefff3;
+        }
+
+        .search-bar {
+            color: #fefff3;
+            border-color: #fefff3;
+        }
+
+        .search-bar::placeholder {
+            color: #fefff3;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            .nav-right ul {
+                background-color: #2e281f;
+            }
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            padding-top: 100px;
+        }
+
+        .pfp-image {
+            /* Circular, size of pic.png (clamped ~200-400px), centered */
+            width: clamp(140px, 17.5vw, 280px);
+            /* Using reduced homepage size logic */
+            height: clamp(140px, 17.5vw, 280px);
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 30px 0;
+            border: 5px solid #2e281f;
+            /* Optional border to match theme? Or plain? User said "circular embedded picture". */
+        }
+
+        .contact-details {
+            font-size: 24px;
+            text-align: center;
+            color: #2e281f;
+            font-style: italic;
+            /* "All the text written outside the tiles must be italicised and centered." */
+        }
+
+        .social-icons {
+            margin-top: 30px;
+            font-size: 40px;
+            gap: 30px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
-<body>
+
+<body style="background-color: #fefff3;">
     <nav>
-        <img src="images/logo.png" class="logo">
-        <ul id="sidemenu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="exp.html">Experience</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="skill.html">Skills</a></li>
-            <li><a href="contact.html">Contact Me</a></li>
-            <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
-        </ul>
-            <i class="fa-solid fa-bars"onclick="openmenu()"></i>
-        </nav>
-        <!-----contact------------>
-<div class="contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-title">Contact Me</h1>
-                <p><i class="fa-regular fa-paper-plane"></i>riyakashive@gmail.com</p>
-                <p><i class="fa-solid fa-phone"></i>+91 9920441896</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-github"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                </div>
-                <a href="images/Pfp.png" download class="btn btn2"><i class="fa-solid fa-download"></i>Download CV</a>
-            </div>
+        <a href="index.html" class="nav-logo">Ri's nook</a>
+        <div class="nav-right">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <ul id="sidemenu">
+                <li><a href="index.html" class="clickable-element">home</a></li>
+                <li><a href="about.html" class="clickable-element">about</a></li>
+                <li><a href="design.html" class="clickable-element">design</a></li>
+                <li><a href="tech.html" class="clickable-element">tech</a></li>
+                <li><a href="academics.html" class="clickable-element">academics</a></li>
+                <li><a href="art.html" class="clickable-element">art</a></li>
+                <li><a href="design.html" class="clickable-element">portfolio</a></li>
+                <li><a href="Riya_Sanket_Kashive_s_Résumé (7).pdf" class="clickable-element" download>CV</a></li>
+                <li><a href="contact.html" class="clickable-element">contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </div>
+    </nav>
+
+    <div class="container contact-container">
+        <h1 class="page-title" style="color: #2e281f; margin-bottom: 0;">Contact Me</h1>
+
+        <img src="pfp.png" alt="Profile" class="pfp-image">
+
+        <div class="contact-details">
+            <p><i class="fa-regular fa-paper-plane"></i> riyakashive@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i> +91 9920441896</p>
+        </div>
+
+        <div class="social-icons">
+            <a href="mailto:riyakashive@gmail.com" style="color: #2e281f;" class="clickable-element"><i
+                    class="fa-regular fa-envelope"></i></a>
+            <a href="#" style="color: #2e281f;" class="clickable-element"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" style="color: #2e281f;" class="clickable-element"><i class="fa-brands fa-github"></i></a>
+            <a href="#" style="color: #2e281f;" class="clickable-element"><i class="fa-brands fa-linkedin"></i></a>
         </div>
     </div>
-</div>
-<script>
-    var sidemeu=document.getElementById("sidemenu");
-    function openmenu(){
-        sidemeu.style.right="0";
-    }
-    function closemenu(){
-        sidemeu.style.right="-200px";
-    }
-</script>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>

@@ -1,387 +1,431 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap');
+
+@font-face {
+  font-family: 'Playlist Script';
+  src: url('Playlist Script.otf') format('opentype');
+}
+
+:root {
+  --color-primary: #ffa51f;
+  --color-secondary: #ff751f;
+  --color-accent-1: #ff5757;
+  --color-accent-2: #ff4b86;
+  --color-dark: #2e281f;
+  --color-light: #fefff3;
+
+  --font-main: 'IM Fell English', serif;
+  --font-script: 'Playlist Script', cursive;
+}
+
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
-body{
-  background: #160529;
-  color: #fff;
-}
-#header{
-  width: 100%;
-  height: 100vh;
-  background-image: url(images/bg.png);
-  background-size: cover;
-  background-position: center;
 
+body {
+  background-color: var(--color-light);
+  font-family: var(--font-main);
+  color: var(--color-dark);
+  overflow-x: hidden;
 }
-.container{
-  padding: 10px 10%;
+
+/* 
+   GLOBAL TEXT STYLING 
+   "All the text written outside the tiles must be italicised and centered."
+*/
+/* Helper class for general page content to enforce this */
+.page-content-text {
+  font-style: italic;
+  text-align: center;
 }
-nav{
+
+/* Also apply to specific known text containers */
+.hero-text,
+.section-header,
+.page-title,
+.about-text {
+  font-style: italic;
+  text-align: center;
+}
+
+/* Subtext specifically excluded from italics as per latest request */
+.hero-subtext {
+  font-style: normal;
+  text-align: center;
+}
+
+
+/* NAVBAR */
+nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  padding-right: 20px;
-}
-
-.logo{
-  width: 100px;
-  height:100px;
-  border-radius: 50%;
-
-}
-
-nav ul li{
-  display: inline-block;
-  list-style: none;
-  margin:10px 20px;
-}
-
-nav ul li a{
-  color:#fff;
-  text-decoration: none;
-  font-size: 18px;
-  position: relative;
-}
-
-nav ul li a::after{
-  content: '';
-  width: 0;
-  height: 3px;
-  background: #bddeff;
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  transition:0.5s;
-}
-
-nav ul li a::hover::after{
-  width:100%;
-}
-.header-text{
-  margin-top: 20%;
-  font-size: 30px;
-}
-
-.header-text h1{
-  font-size: 60px;
-  margin-top: 20px;
-}
-
-.header-text h1 span{
-  color: #bddeff;
-}
-/*----------about-------------------*/
-#about{
-  padding: 88px 0;
-  color: #ababab;
-}
-.row{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.about-col-1{
-  flex-basis: 35%;
-}
-.about-col-1 img{
+  padding: 5px 5%;
+  /* Even thinner */
   width: 100%;
-  border-radius:15px;
+  position: fixed;
+  /* Fixed position */
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s;
 }
-.about-col-2{
-  flex-basis: 60%;
-  
+
+.nav-logo {
+  font-family: var(--font-script);
+  font-size: clamp(40px, 5vw, 70px);
+  color: inherit;
+  text-decoration: none;
 }
-.about-col-2 h1{
-  font-size: 30px;
-  font-weight:600;
-  color: rgb(255, 255, 255);
-}
-.sub-title{
-  font-size: 60px;
-  font-weight:600;
-  color: rgb(255, 255, 255);
-}
-.tab-titles{
+
+.nav-right {
   display: flex;
-  margin: 20px 0 40px;
-  color:#6896d7;
+  align-items: center;
+  gap: 20px;
 }
-.tab-links{
-  margin-right: 50px;
-  font-size: 18px;
-  font-weight: 500;
 
+.search-bar {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-main);
+  margin-right: 5vw;
+  width: 25vw;
+  font-style: normal;
+  font-size: 1.5em;
+  /* Increased by 50% */
 }
-.tab-contents ul li{
+
+.search-bar::placeholder {
+  color: inherit;
+  opacity: 0.7;
+  font-style: italic;
+  /* Search placeholder can be italic maybe? Or user meant ALL non-tile text? Usually placeholders are fine. */
+}
+
+/* Desktop Menu */
+nav ul {
+  display: flex;
   list-style: none;
-  margin: 10px 0;
-}
-.tab-contents ul li span{
-  color:#6896d7;
-  font-size: 14px;
-  }
-.tab-contents{
-  display: none;
-}
-.tab-contents.active-tab{
-  display: block;
-}
-/*--------experience-------*/
-#exp{
-  padding: 30px 0;
-}
-.exp-list{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 40px;
-  margin-top: 50px;
-}
-.exp-list div{
-  background: #262626;
-  padding: 40px;
-  font-size: 13px;
-  font-weight: 300;
-  border-radius: 10px;
-  transition: background 0.5s, transform 0.5s;
+  gap: 20px;
 }
 
-.exp-list i{
-  font-size: 50px;
+nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  font-size: clamp(14px, 1.5vw, 20px);
+  font-family: var(--font-main);
+  font-style: normal;
+  display: inline-block;
+  /* Required for transform */
+  transition: transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  transform: scale(1.2);
+  /* Increase size by 20% */
+}
+
+/* Hamburger Menu (Hidden by default) */
+.fa-solid.fa-bars,
+.fa-solid.fa-circle-xmark {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Animations */
+.clickable-element {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+}
+
+.clickable-element:hover {
+  transform: scale(1.05);
+}
+
+/* PAGE LAYOUTS */
+.container {
+  padding: 100px 5%;
+  min-height: 100vh;
+}
+
+.section-header {
+  font-size: clamp(40px, 5vw, 80px);
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.page-title-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.page-title {
+  font-size: clamp(50px, 6vw, 100px);
   margin-bottom: 30px;
 }
-.exp-list div h2{
-  font-size: 30px;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-.exp-list div a{
-  text-decoration: none;
-  color:#fff;
-  font-size: 12px;
-  margin-top: 20px;
-  display: inline-block;
 
+/* TILE GRIDS */
+.tile-row {
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+  max-width: 100%;
 }
-.exp-list div:hover{
-  background: #bddeff;
-  transform: translateY(-10px);
 
-}
-/*--------projects--------------*/
-#projects{
-  padding: 50px 0;
-}
-.work-list{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 40px;
-  margin-top: 50px;
-}
-.work{
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
-}
-.work img{
-  width: 100%;
-  border-radius: 10px;
-  display: block;
-  transition: transform 0.5s;
-}
-.layer{
-  width: 100%;
-  height:0;
-  background: linear-gradient(rgba(0,0,0,0.6),#bddeff);
-  border-radius: 10px;
-  position: absolute;
-  left: 0;
-  bottom:0;
+.tile {
+  flex: 0 0 auto;
+  width: clamp(150px, 18vw, 300px);
+  height: clamp(150px, 18vw, 300px);
+  border-radius: 50%;
+  border: 5px solid;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  padding: 0 40;
   text-align: center;
-  font-size: 14px;
-  transition: height 0.5s;
-}
-.layer h3{
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-.layer a{
-  margin-top: 20px;
-  color: #6896d7;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
   text-decoration: none;
-  font-size: 18px;
-line-height: 60px;
-background: white;
-width: 60px;
-height: 60px;
-border-radius: 50%;
-text-align: center;
+  color: var(--color-dark);
 }
-.work:hover img{
-  transform:scale(1.1);
 
+.tile span {
+  position: relative;
+  z-index: 2;
+  /* "remove the whitish background that they have" -> remove background */
+  /* background: rgba(255, 255, 255, 0.7); */
+  padding: 10px 20px;
+  /* border-radius: 20px; */
+  font-size: clamp(16px, 1.8vw, 24px);
+  /* Reverted size */
+  pointer-events: none;
+  /* "unitalicise the text that is written in the tiles" */
+  font-style: normal;
 }
-.work:hover .layer{
-  height:100%;
+
+/* HOME PAGE SPECIFIC */
+#home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+  padding-top: 100px;
+  position: relative;
+  justify-content: space-between;
 }
-.btn{
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  flex-grow: 1;
+}
+
+.hero-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 65%;
+}
+
+.hero-text {
+  font-size: clamp(50px, 8vw, 120px);
+  line-height: 1.1;
+  font-style: italic;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-subtext {
+  font-size: clamp(20px, 3vw, 40px);
+  margin-top: 20px;
+  /* "Keep the 'I like solving puzzles... ' line unitalicized. Keep that as plain text, do not make that hypertext." */
+  cursor: default;
+  /* No pointer */
+  width: 100%;
+  text-align: center;
+  font-style: normal;
+}
+
+.hero-image-tile {
+  /* "reduce size of the pic.png tile to 70% of its diameter" */
+  /* Old was clamp(200px, 25vw, 400px). 70% of that is approx 140, 17.5, 280. */
+  width: clamp(140px, 17.5vw, 280px);
+  height: clamp(140px, 17.5vw, 280px);
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 10vw;
+  /* Move towards center */
+}
+
+.hero-image-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-nav-row {
+  display: flex;
+  gap: 5vw;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  width: 100%;
+}
+
+.home-nav-tile {
+  height: 31vh;
+  /* Increased by ~40% */
+  width: 31vh;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-dark);
+}
+
+.home-nav-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-bg-image {
   display: block;
-  margin: 50px auto;
-  width: fit-content;
-  border: 1px solid #6896d7;
-  padding: 14px 50px;
-  border-radius: 6px;
-  text-decoration:none;
-  color: white;
-  transition: background 0.5s;
-}
-.btn:hover{
-background: #6896d7;
-}
-/*--------experience-------*/
-#skill{
-  padding: 30px 0;
-}
-.skill-list{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 40px;
-  margin-top: 50px;
-}
-.skill-list div{
-  background: #262626;
-  padding: 40px;
-  font-size: 13px;
-  font-weight: 300;
-  border-radius: 10px;
-  transition: background 0.5s, transform 0.5s;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
-.skill-list i{
-  font-size: 50px;
-  margin-bottom: 30px;
-}
-.skill-list div h2{
-  font-size: 30px;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-.skill-list div a{
-  text-decoration: none;
-  color:#fff;
-  font-size: 12px;
-  margin-top: 20px;
-  display: inline-block;
+/* MOBILE RESPONSIVENESS */
+@media (max-aspect-ratio: 1/1) {
 
-}
-.skill-list div:hover{
-  background: #bddeff;
-  transform: translateY(-10px);
-
-}
-/*-----contact----------------*/
-.contact-left{
-  flex-basis: 60%;
-}
-.contact-left p{
-  margin-top: 30px;
-}
-.contact-left p i{
-color: #6896d7;
-margin-right: 15px;
-font-size: 25px;
-}
-.social-icons{
-  margin-top: 30px;
-}
-.social-icons a{
-  text-decoration: none;
-  font-size: 30px;
-  margin-right: 15px;
-  color: #ababab;
-  display:inline-block;
-  transition: transform 0.5s;
-}
-.social-icons:hover{
-  color: #6896d7;
-  transform: translateY(-5px);
-}
-.btn.btn2{
-  display: inline-block;
-  background: #6896d7;
-}
-/*----------css for small screen-----*/
-nav .fas{
-  display: none;
-}
-@media only screen and (max-width: 600px){
-  #header{
-    background-image: url(images/bg.png);
-  }
-  .header-text{
-    margin-top: 100%;
-    font-size: 16px;
-  }
-  .header-text h1{
-    font-size: 28px;
-  }
-  nav{
-    align-items: center;
-  }
-  nav .fas{
-    display: block;
-    font-size: 25px;
-  }
-  nav ul{
-    background: #6896d7;
+  /* Collapse Navbar */
+  .nav-right ul {
     position: fixed;
     top: 0;
-    right:-200px;
-    width: 200px;
+    right: -250px;
+    width: 250px;
     height: 100vh;
-    padding-top:50px ;
-    z-index:2;
-    transition: right 0.5s;
+    background: inherit;
+    background-color: var(--color-dark);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 200;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   }
-  nav ul li{
+
+  .nav-right ul li {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .nav-right ul li a {
+    font-size: 24px;
     display: block;
-    margin: 25px;
   }
-  nav ul .fas{
+
+  /* "remove the cross and hamburger menu icon from the navbar when it is NOT in collapsed mode" 
+       Here inside the media query is "collapsed mode" (mobile). So we SHOW them here. */
+
+  .nav-right ul .fa-circle-xmark {
+    display: block;
     position: absolute;
-    top: 25px;
-    left: 25px;
-    cursor: pointer; 
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: inherit;
   }
-  .sub-title{
-    font-size: 40px;
+
+  .fa-solid.fa-bars {
+    display: block;
+    margin-left: 20px;
+    color: inherit;
   }
-  .about-col-1, .about-col-2{
-   flex-basis: 100%;
+
+  /* Layout Adjustments for Portrait */
+  #home-container {
+    padding-top: 120px;
+    justify-content: center;
+    gap: 20px;
   }
-  .about-col-1{
-    margin-bottom: 30px;
+
+  .hero-section {
+    flex-direction: column-reverse;
+    justify-content: center;
+    flex: 0 0 auto;
   }
-  .about-col-2{
-    font-size: 10px;
+
+  .hero-text-container {
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
   }
-  .tab-links{
-    font-size: 16px;
-    margin-right: 20px;
+
+  .hero-text {
+    white-space: normal;
   }
-  .contact-left{
-    flex-basis: 100%;
+
+  .hero-image-tile {
+    width: 40vw;
+    /* Also reduced relatively? */
+    height: 40vw;
+    margin-top: 20px;
+    margin-right: 0;
+    /* Reset desktop margin */
   }
+
+  .home-nav-row {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    flex: 1;
+  }
+
+  .home-nav-tile {
+    width: 35vw;
+    height: 35vw;
+  }
+}
+
+/* Back to Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-radius: 50%;
+  border: 2px solid var(--color-dark);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s;
+}
+
+#back-to-top:hover {
+  transform: scale(1.1);
+  background-color: var(--color-light);
 }

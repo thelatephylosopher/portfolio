@@ -1,45 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riya's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+    <style>
+        nav {
+            background-color: #2e281f;
+            color: #fefff3;
+        }
+
+        nav a {
+            color: #fefff3;
+        }
+
+        .search-bar {
+            border-color: #fefff3;
+            color: #fefff3;
+        }
+
+        .search-bar::placeholder {
+            color: rgba(254, 255, 243, 0.7);
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            .nav-right ul {
+                background-color: #2e281f;
+            }
+        }
+    </style>
 </head>
-<body>
-    <div id="header">
-        <div class="container">
-            <nav>
-                <img src="images/logo.png" class="logo">
-                <ul id="sidemenu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                    <li><a href="exp.html">Experience</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="skill.html">Skills</a></li>
-                    <li><a href="contact.html">Contact Me</a></li>
-                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
-                </ul>
-                    <i class="fa-solid fa-bars"onclick="openmenu()"></i>
-                </nav>
-                <div class="header-text">
-                    <h1>Hi, I'm <span>Riya Sanket Kashive</span><br>A force of the Renaissance</h1>
-                    <p>Average mortal. Exceptional mind.</p>
-                </div>
 
+<body style="--page-color: #2e281f; background-color: #fefff3;">
+    <nav>
+        <a href="index.html" class="nav-logo">Ri's nook</a>
+        <div class="nav-right">
+            <input type="text" placeholder="Search..." class="search-bar" id="site-search">
+            <ul id="sidemenu">
+                <li><a href="index.html" class="clickable-element">home</a></li>
+                <li><a href="about.html" class="clickable-element">about</a></li>
+                <li><a href="design.html" class="clickable-element">design</a></li>
+                <li><a href="tech.html" class="clickable-element">tech</a></li>
+                <li><a href="academics.html" class="clickable-element">academics</a></li>
+                <li><a href="art.html" class="clickable-element">art</a></li>
+                <li><a href="design.html" class="clickable-element">portfolio</a></li>
+                <li><a href="Riya_Sanket_Kashive_s_Résumé (7).pdf" class="clickable-element" download>CV</a></li>
+                <li><a href="contact.html" class="clickable-element">contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
         </div>
-    </div>    
-    <script>
-        var sidemeu=document.getElementById("sidemenu");
-        function openmenu(){
-            sidemeu.style.right="0";
-        }
-        function closemenu(){
-            sidemeu.style.right="-200px";
-        }
-    </script>
+    </nav>
 
+    <div class="container" id="home-container">
+        <div class="hero-section">
+            <div class="hero-text-container">
+                <div class="hero-text">
+                    Hi, I'm Riya
+                </div>
+                <!-- Removed onclick and clickable-element class. Plain text. -->
+                <div class="hero-subtext">
+                    I like solving puzzles. Click to know more!
+                </div>
+            </div>
+
+            <a href="about.html" class="hero-image-tile clickable-element">
+                <img src="pic.png" alt="Riya">
+            </a>
+        </div>
+
+        <div class="home-nav-row">
+            <a href="design.html" class="home-nav-tile clickable-element" title="Design">
+                <img src="designer.png" alt="Design">
+            </a>
+            <a href="tech.html" class="home-nav-tile clickable-element" title="Tech">
+                <img src="techie.png" alt="Tech">
+            </a>
+            <a href="academics.html" class="home-nav-tile clickable-element" title="Academics">
+                <img src="academic.png" alt="Academics">
+            </a>
+            <a href="art.html" class="home-nav-tile clickable-element" title="Art">
+                <img src="artist.png" alt="Art">
+            </a>
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>

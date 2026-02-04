@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            /* "the bg1.png must not end, it must continue for entirety of the page." */
+            background-image: url('bg1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Keep it fixed while scrolling */
+            /* If it needs to repeat, use background-repeat: repeat; but 'entirety' suggests cover usually. */
+            background-color: #fefff3;
+        }
+
+        nav {
+            background-color: rgba(255, 165, 31, 0.8);
+            /* #ffa51f 80% */
+            color: #fefff3;
+        }
+
+        .tile {
+            border-color: #ffa51f;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            .nav-right ul {
+                background-color: rgba(255, 165, 31, 0.95);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Ri's nook</a>
+        <div class="nav-right">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <ul id="sidemenu">
+                <li><a href="index.html" class="clickable-element">home</a></li>
+                <li><a href="about.html" class="clickable-element">about</a></li>
+                <li><a href="design.html" class="clickable-element">design</a></li>
+                <li><a href="tech.html" class="clickable-element">tech</a></li>
+                <li><a href="academics.html" class="clickable-element">academics</a></li>
+                <li><a href="art.html" class="clickable-element">art</a></li>
+                <li><a href="design.html" class="clickable-element">portfolio</a></li>
+                <li><a href="Riya_Sanket_Kashive_s_Résumé (7).pdf" class="clickable-element" download>CV</a></li>
+                <li><a href="contact.html" class="clickable-element">contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 150px;">
+        <div class="page-title-section">
+            <h1 class="page-title">Design Projects</h1>
+        </div>
+
+        <div id="design-projects" class="tile-row">
+            <!-- Projects injected here -->
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSection('design-projects',
+                (p) => p.uiDesign === 1 || p.uxResearch === 1 || p.prototyping === 1 || p.graphicDesign === 1,
+                (p) => p.name,
+                (p) => p.link,
+                null,
+                '#ffa51f'
+            );
+        });
+    </script>
+</body>
+
+</html>

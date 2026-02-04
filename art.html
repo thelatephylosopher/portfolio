@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #fefff3;
+        }
+
+        nav {
+            background-color: rgba(255, 75, 134, 0.8);
+            /* #ff4b86 80% */
+            color: #fefff3;
+        }
+
+        .category-tile {
+            border-color: #ff4b86 !important;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #2e281f;
+            font-weight: bold;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            .nav-right ul {
+                background-color: rgba(255, 75, 134, 0.95);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Ri's nook</a>
+        <div class="nav-right">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <ul id="sidemenu">
+                <li><a href="index.html" class="clickable-element">home</a></li>
+                <li><a href="about.html" class="clickable-element">about</a></li>
+                <li><a href="design.html" class="clickable-element">design</a></li>
+                <li><a href="tech.html" class="clickable-element">tech</a></li>
+                <li><a href="academics.html" class="clickable-element">academics</a></li>
+                <li><a href="art.html" class="clickable-element">art</a></li>
+                <li><a href="design.html" class="clickable-element">portfolio</a></li>
+                <li><a href="Riya_Sanket_Kashive_s_Résumé (7).pdf" class="clickable-element" download>CV</a></li>
+                <li><a href="contact.html" class="clickable-element">contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </div>
+    </nav>
+
+    <!-- Header Block with Image Background -->
+    <div
+        style="position: relative; width: 100%; min-height: 80vh; background-image: url('bg4.png'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 100px;">
+        <h1 class="page-title" style="color: #fefff3;">Art</h1>
+        <div class="tile-row">
+            <a href="#words" class="tile category-tile clickable-element"><span>Words</span></a>
+            <a href="#music" class="tile category-tile clickable-element"><span>Music</span></a>
+            <a href="#sketches" class="tile category-tile clickable-element"><span>Sketches</span></a>
+            <a href="#photography" class="tile category-tile clickable-element"><span>Photography</span></a>
+        </div>
+    </div>
+
+
+    <!-- Content Sections -->
+    <div style="background-color: #fefff3; padding: 50px 5%;">
+        <div id="words" class="section-block">
+            <h2 class="section-header">Words</h2>
+            <div class="page-content-text" style="font-size: 24px;">coming soon!</div>
+        </div>
+
+        <div id="music" class="section-block">
+            <h2 class="section-header">Music</h2>
+            <div id="music-list" class="tile-row"></div>
+        </div>
+
+        <div id="sketches" class="section-block">
+            <h2 class="section-header">Sketches</h2>
+            <div id="sketches-list" class="tile-row"></div>
+        </div>
+
+        <div id="photography" class="section-block">
+            <h2 class="section-header">Photography</h2>
+            <div id="photography-list" class="tile-row"></div>
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

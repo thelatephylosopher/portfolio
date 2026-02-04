@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #fefff3;
+        }
+
+        nav {
+            background-color: rgba(255, 87, 87, 0.8);
+            /* #ff5757 80% */
+            color: #fefff3;
+        }
+
+        .category-tile {
+            border-color: #ff5757 !important;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #2e281f;
+            font-weight: bold;
+        }
+
+        .non-clickable-tile {
+            border-color: #ff5757 !important;
+            background-image: url('bg3.png') !important;
+            background-size: cover;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .project-tile-custom {
+            border-color: #ff5757 !important;
+        }
+
+        #coursework-list .tile,
+        #projects-list .tile,
+        #people-list .tile {
+            color: #fefff3;
+        }
+
+        @media (max-aspect-ratio: 1/1) {
+            .nav-right ul {
+                background-color: rgba(255, 87, 87, 0.95);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Ri's nook</a>
+        <div class="nav-right">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <ul id="sidemenu">
+                <li><a href="index.html" class="clickable-element">home</a></li>
+                <li><a href="about.html" class="clickable-element">about</a></li>
+                <li><a href="design.html" class="clickable-element">design</a></li>
+                <li><a href="tech.html" class="clickable-element">tech</a></li>
+                <li><a href="academics.html" class="clickable-element">academics</a></li>
+                <li><a href="art.html" class="clickable-element">art</a></li>
+                <li><a href="design.html" class="clickable-element">portfolio</a></li>
+                <li><a href="Riya_Sanket_Kashive_s_Résumé (7).pdf" class="clickable-element" download>CV</a></li>
+                <li><a href="contact.html" class="clickable-element">contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </div>
+    </nav>
+
+    <!-- Header Block with Image Background -->
+    <div
+        style="position: relative; width: 100%; min-height: 80vh; background-image: url('bg3.png'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 100px;">
+        <h1 class="page-title">Academics</h1>
+        <div class="tile-row">
+            <a href="#coursework" class="tile category-tile clickable-element"><span>Coursework</span></a>
+            <a href="#projects" class="tile category-tile clickable-element"><span>Projects</span></a>
+            <a href="#publications" class="tile category-tile clickable-element"><span>Publications</span></a>
+            <a href="#people" class="tile category-tile clickable-element"><span>People</span></a>
+        </div>
+    </div>
+
+    <!-- Content Sections -->
+    <div style="background-color: #fefff3; padding: 50px 5%;">
+
+        <!-- Coursework -->
+        <div id="coursework" class="section-block">
+            <h2 class="section-header">Coursework</h2>
+            <div id="coursework-list" class="tile-row">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div id="projects" class="section-block">
+            <h2 class="section-header">Projects</h2>
+            <div id="projects-list" class="tile-row"></div>
+        </div>
+
+        <!-- Publications -->
+        <div id="publications" class="section-block">
+            <h2 class="section-header">Publications</h2>
+            <div class="page-content-text" style="font-size: 24px;">
+                none yet, but hopefully there will be some soon!
+            </div>
+        </div>
+
+        <!-- People -->
+        <div id="people" class="section-block">
+            <h2 class="section-header">People</h2>
+            <div id="people-list" class="tile-row"></div>
+        </div>
+
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tileBg = 'bg3.png';
+            const brdColor = '#ff5757';
+
+            // 1. Coursework
+            const courses = [...new Set(projectsData.map(p => p.course).filter(c => c && c !== 'NaN'))];
+            const courseContainer = document.getElementById('coursework-list');
+            courses.forEach(courseName => {
+                const div = document.createElement('div');
+                div.className = 'tile non-clickable-tile';
+                div.style.backgroundImage = `url('${tileBg}')`;
+                div.style.borderColor = brdColor;
+
+                const span = document.createElement('span');
+                span.innerText = courseName;
+                div.appendChild(span);
+
+                courseContainer.appendChild(div);
+            });
+
+            // 2. Projects
+            renderSection('projects-list', p => true, p => p.name, p => p.link, tileBg, brdColor);
+
+            // 3. People (Mentors)
+            renderSection('people-list', p => p.mentor && p.mentor !== 'NaN' && p.mentor !== 'Self Project' && p.mentor !== 'Competition', p => p.name, p => p.link, tileBg, brdColor);
+        });
+    </script>
+</body>
+
+</html>

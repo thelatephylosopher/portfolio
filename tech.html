@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3b688804e2.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #fefff3;
+        }
+
+        nav {
+            background-color: rgba(255, 117, 31, 0.8);
+            /* #ff751f 80% */
+            color: #fefff3;
+        }
+
+        .category-tile {
+            cursor: pointer;
+            border-color: #ff751f !important;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #2e281f;
+            font-weight: bold;
+        }
+
+        /* Translucent full-tile overlay for non-category tiles */
+        #product-dev-list .tile::before,
+        #aiml-list .tile::before,
+        #datascience-list .tile::before,
+        #engtech-list .tile::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            /* 30% opaque overlay */
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        #product-dev-list .tile span,
+        #aiml-list .tile span,
+        #datascience-list .tile span,
+        #engtech-list .tile span {
+            /* Reset span background if it was set globally or previously */
+            background-color: transparent;
+            width: auto;
+            display: inline;
+        }
+
+        @media (max-aspect-ratio: 1/1) {}
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">Ri's nook</a>
+        <div class="nav-right">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <ul id="sidemenu">
+                <li><a href="index.html" class="clickable-element">home</a></li>
+                <li><a href="about.html" class="clickable-element">about</a></li>
+                <li><a href="design.html" class="clickable-element">design</a></li>
+                <li><a href="tech.html" class="clickable-element">tech</a></li>
+                <li><a href="academics.html" class="clickable-element">academics</a></li>
+                <li><a href="art.html" class="clickable-element">art</a></li>
+                <li><a href="design.html" class="clickable-element">portfolio</a></li>
+                <li><a href="Riya_Sanket_Kashive_s_Résumé (7).pdf" class="clickable-element" download>CV</a></li>
+                <li><a href="contact.html" class="clickable-element">contact</a></li>
+                <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </div>
+    </nav>
+
+    <!-- Header Block matches Academics structure: No standalone img tag, just the div with bg -->
+    <div
+        style="position: relative; width: 100%; min-height: 80vh; background-image: url('bg2.png'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 100px;">
+        <h1 class="page-title">Tech Projects</h1>
+        <div class="tile-row">
+            <a href="#product-dev" class="tile category-tile clickable-element"><span>Product Dev</span></a>
+            <a href="#aiml" class="tile category-tile clickable-element"><span>AI / ML</span></a>
+            <a href="#datascience" class="tile category-tile clickable-element"><span>Data Science</span></a>
+            <a href="#engtech" class="tile category-tile clickable-element"><span>Engineering Technologies</span></a>
+        </div>
+    </div>
+
+    <!-- Content Sections -->
+    <div style="background-color: #fefff3; padding: 50px 5%;">
+        <div id="product-dev" class="section-block">
+            <h2 class="section-header">Product Development</h2>
+            <div id="product-dev-list" class="tile-row"></div>
+        </div>
+
+        <div id="aiml" class="section-block">
+            <h2 class="section-header">AI / ML</h2>
+            <div id="aiml-list" class="tile-row"></div>
+        </div>
+
+        <div id="datascience" class="section-block">
+            <h2 class="section-header">Data Science</h2>
+            <div id="datascience-list" class="tile-row"></div>
+        </div>
+
+        <div id="engtech" class="section-block">
+            <h2 class="section-header">Engineering Technologies</h2>
+            <div id="engtech-list" class="tile-row"></div>
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tileBg = 'bg2.png';
+            const brdColor = '#ff751f';
+
+            renderSection('product-dev-list', p => p.productDev === 1, p => p.name, p => p.link, tileBg, brdColor);
+            renderSection('aiml-list', p => p.aiMl === 1, p => p.name, p => p.link, tileBg, brdColor);
+            renderSection('datascience-list', p => p.dataScience === 1, p => p.name, p => p.link, tileBg, brdColor);
+            renderSection('engtech-list', p => p.engineeringTech === 1, p => p.name, p => p.link, tileBg, brdColor);
+        });
+    </script>
+</body>
+
+</html>
